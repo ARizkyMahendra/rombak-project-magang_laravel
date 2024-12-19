@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar scroll</a>
+        <a class="navbar-brand" href="#">Agenda Bupati</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,7 +33,15 @@
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form> --}}
-            <a class="btn btn-outline-success" href="/login" >Login</a>
+            @auth
+            <div class="row-sm-2">
+                <h4>{{Auth::user()->role}} {{Auth::user()->name}}</h4> 
+                <a class="btn btn-danger btn-sm" href="logout">Logout</a>
+            </div>
+            @endauth
+            @guest
+                <a class="btn btn-outline-success" href="/login" >Login</a>
+            @endguest
         </div>
     </div>
 </nav>

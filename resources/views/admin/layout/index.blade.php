@@ -18,9 +18,7 @@
     @if(Auth::check())
     <div class="text-center">
         <h1>Halo ! {{Auth::user()->name}}</h1>
-        
-            <a class="btn btn-danger btn-sm" href="logout">Logout</a>
-        
+        <a class="btn btn-danger btn-sm" href="logout">Logout</a>
     </div>
     @endif
     <h1>Halaman admin</h1>
