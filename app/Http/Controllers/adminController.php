@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class adminController extends Controller
 {
     public function index(){
-        return view('admin.layout.index',[
+        return view('admin.page.dashboard',[
             'title' => 'Admin Dashboard',
         ]);
     }
