@@ -28,14 +28,14 @@
                         @foreach ($jabatan as $y => $x)
                             <tr class="align-middle justify-content-center">
                                 <th>{{++$y}}</th>
-                                <td>{{$x -> kode_jabatan}}</td>
-                                <td>{{$x -> jabatan}}</td>
+                                <td>{{$x->kode_jabatan}}</td>
+                                <td>{{$x->jabatan}}</td>
                                 <td>
-                                    <button class="btn btn-info editModal" data-id="">
+                                    <button class="btn btn-info editModal" data-id="{{$x->id}}">
                                         <i class="far fa-edit"></i>
                                     </button>
 
-                                    <button class="btn btn-danger deleteData" data-id="">
+                                    <button class="btn btn-danger deleteData" data-id="{{$x->id}}">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </td>
@@ -105,6 +105,73 @@
                 $('#addModal').modal('show');
             }
         });
+    });
+
+    $('.editModal').click(function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        $.ajax({
+            type: "get",
+            url: "{{route('admin.editJabatan',['id'=>':id'])}}".replace(':id', id),
+            success: function(response) {
+                $('.tampilEditData').html(response).show();
+                $('#editModal').modal('show');
+            }
+        });
+    });
+
+    $('.deleteData').click(function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var jabatan = $('#jabatan').val();
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener("mouseenter", Swal.stopTimer);
+                toast.addEventListener("mouseleave", Swal.resumeTimer);
+                setTimeout(function() {
+                    window.location.reload();
+                }, 1000);
+            },
+        });
+
+        Swal.fire({
+            title: 'Hapus data ?',
+            text: "Kamu yakin untuk menghapus jabatan " + jabatan + " ?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "DELETE",
+                    url: "{{ route('admin.deleteJabatan', ['id' => ':id']) }}".replace(':id', id),
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.success) {
+                            Toast.fire({
+                                icon: "success",
+                                title: response.success,
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Tampilkan notifikasi error jika terjadi kesalahan
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Terjadi kesalahan saat menghapus data',
+                            icon: 'error'
+                        });
+                    }
+                });
+            }
+        })
     });
 </script>
 

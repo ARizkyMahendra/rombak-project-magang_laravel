@@ -3,6 +3,7 @@
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\authController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\PegawaiController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -22,9 +23,12 @@ Route::middleware('guest')->group(function(){
 Route::middleware('auth')->group(function(){
     Route::get('/logout',[authController::class, 'logout'])->name('logout');
     Route::get('/admin',[adminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/pegawai',[adminController::class, 'pegawai'])->name('admin.pegawai');
-
-    Route::get('/admin/pegawai/addJabatan',[adminController::class, 'addJabatan'])->name('admin.addJabatan');
-    Route::post('/admin/pegawai/addJabatan/addData',[adminController::class, 'addDataJabatan'])->name('admin.addDataJabatan');
+    
+    Route::get('/admin/pegawai',[PegawaiController::class, 'pegawai'])->name('admin.pegawai');
+    Route::get('/admin/pegawai/addJabatan',[PegawaiController::class, 'addJabatan'])->name('admin.addJabatan');
+    Route::post('/admin/pegawai/addJabatan/addData',[PegawaiController::class, 'addDataJabatan'])->name('admin.addDataJabatan');
+    Route::get('/admin/pegawai/editData/{id}',[PegawaiController::class, 'editJabatan'])->name('admin.editJabatan');
+    Route::put('/admin/pegawai/editData/updateData/{id}',[PegawaiController::class, 'updateJabatan'])->name('admin.updateJabatan');
+    Route::delete('/admin/pegawai/DeleteData/{id}',[PegawaiController::class, 'deleteJabatan'])->name('admin.deleteJabatan');
 });
 
