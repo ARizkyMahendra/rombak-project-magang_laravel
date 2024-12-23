@@ -18,6 +18,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{route('admin.pegawai')}}">Tambah Jabatan dan Pejabat</a></li>
+                        <li><a class="dropdown-item" href="{{route('admin.agenda')}}">Tambah Agenda</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
                         <li>
                             <hr class="dropdown-divider">

@@ -21,6 +21,7 @@
     @yield('content')
     @include('sweetalert::alert')
 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
     {{-- <script src="{{asset('js/custom.js')}}"></script> --}}

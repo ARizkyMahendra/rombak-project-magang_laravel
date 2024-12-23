@@ -7,7 +7,7 @@
                 <h3>Daftar Jabatan</h3>
             </div>
             <div class="card mb-1" style="display: grid">
-                <button class="btn btn-success addJabatan" id="">
+                <button class="btn btn-success " id="addJabatan">
                     <i class="fas fa-plus"></i>
                     <span>Tambah Jabatan</span>
                 </button>
@@ -102,7 +102,7 @@
     })
 
     //script Jabatan
-        $('.addJabatan').click(function() {
+        $('#addJabatan').click(function() {
             $.ajax({
                 url: "{{route('admin.addJabatan')}}",
                 success: function(response) {

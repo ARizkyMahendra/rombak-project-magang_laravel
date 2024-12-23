@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\authController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\PegawaiController;
@@ -25,6 +26,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/admin',[adminController::class, 'index'])->name('admin.dashboard');
     
     Route::get('/admin/pegawai',[PegawaiController::class, 'pegawai'])->name('admin.pegawai');
+    Route::get('/admin/agenda',[AgendaController::class, 'agenda'])->name('admin.agenda');
 
     Route::get('/admin/pegawai/addJabatan',[PegawaiController::class, 'addJabatan'])->name('admin.addJabatan');
     Route::post('/admin/pegawai/addJabatan/addData',[PegawaiController::class, 'addDataJabatan'])->name('admin.addDataJabatan');
@@ -37,5 +39,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/admin/pegawai/editDataPejabat/{id}',[PegawaiController::class, 'editPejabat'])->name('admin.editPejabat');
     Route::put('/admin/pegawai/editData/updateDataPejabat/{id}',[PegawaiController::class, 'updatePejabat'])->name('admin.updatePejabat');
     Route::delete('/admin/pegawai/DeleteDataPejabat/{id}',[PegawaiController::class, 'deletePejabat'])->name('admin.deletePejabat');
+
+    Route::get('/admin/agenda/addAgenda',[AgendaController::class, 'addAgenda'])->name('admin.addAgenda');
 });
 
