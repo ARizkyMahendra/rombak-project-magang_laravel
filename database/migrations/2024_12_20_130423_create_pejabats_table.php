@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('pejabat', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_jabatan')->constrained('jabatan')->cascadeOnDelete();
+            $table->string('id_jabatan');
+            $table->foreign('id_jabatan')->references('kode_jabatan')->on('jabatan')->cascadeOnDelete();
             $table->string('nama');
-            $table->string('periode_jabatan');
             $table->timestamps();
         });
     }
