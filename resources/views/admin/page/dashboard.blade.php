@@ -12,7 +12,6 @@
           <th scope="col">Tempat</th>
           <th scope="col">Kegiatan</th>
           <th scope="col">Pejabat</th>
-          <th scope="col">Action</th>
       </tr>
   </thead>
   <tbody>
@@ -27,15 +26,6 @@
                   <td>{{$x->lokasi}}</td>
                   <td>{{$x->kegiatan}}</td>
                   <td>{{$x->jabatan}}</td>
-                  <td>
-                      <button class="btn btn-info editModal" data-id="">
-                          <i class="far fa-edit"></i>
-                      </button>
-
-                      <button class="btn btn-danger deleteData" data-id="">
-                          <i class="fas fa-trash"></i>
-                      </button>
-                  </td>
               </tr>
           @endforeach
       @endif
