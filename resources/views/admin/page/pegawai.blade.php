@@ -31,7 +31,7 @@
                                 <td>{{$x->kode_jabatan}}</td>
                                 <td>{{$x->jabatan}}</td>
                                 <td>
-                                    <button class="btn btn-info editModal" data-id="{{$x->id}}">
+                                    <button class="btn btn-info editModal mb-1" data-id="{{$x->id}}">
                                         <i class="far fa-edit"></i>
                                     </button>
 

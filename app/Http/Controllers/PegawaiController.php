@@ -11,7 +11,6 @@ class PegawaiController extends Controller
 {
     public function Pegawai()
     {
-
         $jabatan = jabatan::paginate(10);
         $pejabat = pejabat::paginate(10);
         return view('admin.page.pegawai', [

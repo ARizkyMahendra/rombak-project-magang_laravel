@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class agenda extends Model
 {
@@ -17,4 +18,9 @@ class agenda extends Model
         'tgl_mulai',
         'waktu',
     ];
+
+    public function pejabat(): BelongsTo
+    {
+        return $this->belongsTo(pejabat::class);
+    }
 }

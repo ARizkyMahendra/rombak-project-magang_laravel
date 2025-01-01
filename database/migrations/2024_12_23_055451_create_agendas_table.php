@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('agenda', function (Blueprint $table) {
             $table->id();
             $table->string('id_pejabat');
-            $table->foreign('id_pejabat')->references('id')->on('pejabat')->cascadeOnDelete();
+            $table->foreign('id_pejabat')->references('id_jabatan')->on('pejabat')->cascadeOnDelete();
             $table->string('kegiatan');
             $table->string('lokasi');
             $table->string('waktu');

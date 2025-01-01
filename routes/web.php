@@ -5,6 +5,7 @@ use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\authController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\PegawaiController;
+use App\Models\agenda;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -41,5 +42,9 @@ Route::middleware('auth')->group(function(){
     Route::delete('/admin/pegawai/DeleteDataPejabat/{id}',[PegawaiController::class, 'deletePejabat'])->name('admin.deletePejabat');
 
     Route::get('/admin/agenda/addAgenda',[AgendaController::class, 'addAgenda'])->name('admin.addAgenda');
+    Route::post('/admin/agenda/addAgenda/addData',[agendaController::class, 'addDataAgenda'])->name('admin.addDataAgenda');
+    Route::get('/admin/agenda/editDataAgenda/{id}',[agendaController::class, 'editAgenda'])->name('admin.editAgenda');
+    Route::put('/admin/agenda/editData/updateDataAgenda/{id}',[agendaController::class, 'updateAgenda'])->name('admin.updateAgenda');
+    Route::delete('/admin/agenda/DeleteDataAgenda/{id}',[agendaController::class, 'deleteAgenda'])->name('admin.deleteAgenda');
 });
 
